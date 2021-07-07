@@ -7,13 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C31036EC268A95320038C3BF /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31036EA268A95320038C3BF /* FocusSquareSegment.swift */; };
+		C31036ED268A95320038C3BF /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31036EB268A95320038C3BF /* FocusSquare.swift */; };
+		C31036F5268A96550038C3BF /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31036F1268A96550038C3BF /* Utilities.swift */; };
+		C31036F6268A96550038C3BF /* ARSCNView+HitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31036F2268A96550038C3BF /* ARSCNView+HitTests.swift */; };
+		C31036F7268A96550038C3BF /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31036F3268A96550038C3BF /* TextManager.swift */; };
+		C31036F8268A96550038C3BF /* SceneExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31036F4268A96550038C3BF /* SceneExtensions.swift */; };
 		C347BBB9266FF287006E3697 /* Konstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C347BBB8266FF287006E3697 /* Konstants.swift */; };
 		C347BBBC266FF624006E3697 /* UIExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C347BBBB266FF624006E3697 /* UIExtentions.swift */; };
 		C347BBBF26700C10006E3697 /* ARExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C347BBBE26700C10006E3697 /* ARExtentions.swift */; };
 		C347BBC42670107B006E3697 /* LineNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C347BBC32670107B006E3697 /* LineNode.swift */; };
+		C37398562673EC8600B37727 /* LineGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37398552673EC8600B37727 /* LineGroup.swift */; };
+		C393603C2696638600C5FD07 /* ObjectFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C393603B2696638600C5FD07 /* ObjectFactory.swift */; };
 		C3DF5F3B266BD13600CE545F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF5F3A266BD13600CE545F /* AppDelegate.swift */; };
 		C3DF5F3D266BD13600CE545F /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C3DF5F3C266BD13600CE545F /* art.scnassets */; };
-		C3DF5F3F266BD13600CE545F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF5F3E266BD13600CE545F /* ViewController.swift */; };
+		C3DF5F3F266BD13600CE545F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DF5F3E266BD13600CE545F /* MainViewController.swift */; };
 		C3DF5F42266BD13600CE545F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3DF5F40266BD13600CE545F /* Main.storyboard */; };
 		C3DF5F44266BD13900CE545F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3DF5F43266BD13900CE545F /* Assets.xcassets */; };
 		C3DF5F47266BD13900CE545F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3DF5F45266BD13900CE545F /* LaunchScreen.storyboard */; };
@@ -21,14 +29,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C31036EA268A95320038C3BF /* FocusSquareSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
+		C31036EB268A95320038C3BF /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
+		C31036F1268A96550038C3BF /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		C31036F2268A96550038C3BF /* ARSCNView+HitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ARSCNView+HitTests.swift"; sourceTree = "<group>"; };
+		C31036F3268A96550038C3BF /* TextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
+		C31036F4268A96550038C3BF /* SceneExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneExtensions.swift; sourceTree = "<group>"; };
 		C347BBB8266FF287006E3697 /* Konstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Konstants.swift; sourceTree = "<group>"; };
 		C347BBBB266FF624006E3697 /* UIExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtentions.swift; sourceTree = "<group>"; };
 		C347BBBE26700C10006E3697 /* ARExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARExtentions.swift; sourceTree = "<group>"; };
 		C347BBC32670107B006E3697 /* LineNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineNode.swift; sourceTree = "<group>"; };
+		C37398552673EC8600B37727 /* LineGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGroup.swift; sourceTree = "<group>"; };
+		C393603B2696638600C5FD07 /* ObjectFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectFactory.swift; sourceTree = "<group>"; };
 		C3DF5F37266BD13600CE545F /* ARRuler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARRuler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3DF5F3A266BD13600CE545F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3DF5F3C266BD13600CE545F /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		C3DF5F3E266BD13600CE545F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C3DF5F3E266BD13600CE545F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C3DF5F41266BD13600CE545F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3DF5F43266BD13900CE545F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3DF5F46266BD13900CE545F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,9 +63,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C31036E9268A95320038C3BF /* Focus Squares */ = {
+			isa = PBXGroup;
+			children = (
+				C31036EA268A95320038C3BF /* FocusSquareSegment.swift */,
+				C31036EB268A95320038C3BF /* FocusSquare.swift */,
+			);
+			path = "Focus Squares";
+			sourceTree = "<group>";
+		};
+		C31036F0268A96550038C3BF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C31036F1268A96550038C3BF /* Utilities.swift */,
+				C31036F2268A96550038C3BF /* ARSCNView+HitTests.swift */,
+				C31036F3268A96550038C3BF /* TextManager.swift */,
+				C31036F4268A96550038C3BF /* SceneExtensions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		C347BBC126700C17006E3697 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				C31036F0268A96550038C3BF /* Utilities */,
 				C347BBBB266FF624006E3697 /* UIExtentions.swift */,
 				C347BBBE26700C10006E3697 /* ARExtentions.swift */,
 			);
@@ -77,15 +114,18 @@
 			children = (
 				C3DF5F3A266BD13600CE545F /* AppDelegate.swift */,
 				C3DF5F3C266BD13600CE545F /* art.scnassets */,
-				C3DF5F3E266BD13600CE545F /* ViewController.swift */,
+				C3DF5F3E266BD13600CE545F /* MainViewController.swift */,
 				C3DF5F40266BD13600CE545F /* Main.storyboard */,
 				C3DF5F43266BD13900CE545F /* Assets.xcassets */,
 				C3DF5F45266BD13900CE545F /* LaunchScreen.storyboard */,
 				C3DF5F48266BD13900CE545F /* Info.plist */,
 				C3EC167E266D4D03002DE69D /* LineExtention.swift */,
 				C347BBB8266FF287006E3697 /* Konstants.swift */,
+				C393603B2696638600C5FD07 /* ObjectFactory.swift */,
+				C31036E9268A95320038C3BF /* Focus Squares */,
 				C347BBC126700C17006E3697 /* Extentions */,
 				C347BBC32670107B006E3697 /* LineNode.swift */,
+				C37398552673EC8600B37727 /* LineGroup.swift */,
 			);
 			path = ARRuler;
 			sourceTree = "<group>";
@@ -161,13 +201,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C31036F7268A96550038C3BF /* TextManager.swift in Sources */,
 				C347BBC42670107B006E3697 /* LineNode.swift in Sources */,
-				C3DF5F3F266BD13600CE545F /* ViewController.swift in Sources */,
+				C3DF5F3F266BD13600CE545F /* MainViewController.swift in Sources */,
+				C31036F5268A96550038C3BF /* Utilities.swift in Sources */,
+				C31036F8268A96550038C3BF /* SceneExtensions.swift in Sources */,
 				C3EC167F266D4D03002DE69D /* LineExtention.swift in Sources */,
+				C31036F6268A96550038C3BF /* ARSCNView+HitTests.swift in Sources */,
 				C3DF5F3B266BD13600CE545F /* AppDelegate.swift in Sources */,
+				C31036EC268A95320038C3BF /* FocusSquareSegment.swift in Sources */,
 				C347BBBF26700C10006E3697 /* ARExtentions.swift in Sources */,
 				C347BBBC266FF624006E3697 /* UIExtentions.swift in Sources */,
+				C393603C2696638600C5FD07 /* ObjectFactory.swift in Sources */,
 				C347BBB9266FF287006E3697 /* Konstants.swift in Sources */,
+				C37398562673EC8600B37727 /* LineGroup.swift in Sources */,
+				C31036ED268A95320038C3BF /* FocusSquare.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

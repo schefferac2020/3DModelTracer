@@ -10,7 +10,9 @@ import UIKit
 import SceneKit
 import ARKit
 
-class LineNode: NSObject {
+class LineNode: NSObject, NSCopying {
+    
+    
     let startNode: SCNNode
     let endNode: SCNNode
     var lineNode: SCNNode?
@@ -41,11 +43,41 @@ class LineNode: NSObject {
         super.init()
     }
     
+    init(startNode: SCNNode, endNode: SCNNode, lineNode: SCNNode?, sceneView: ARSCNView?) {
+        self.startNode = startNode
+        self.endNode = endNode
+        self.lineNode = lineNode
+        self.sceneView = sceneView
+
+        super.init()
+    }
+    
     deinit {
         removeFromParent()
     }
     
-    public func updatePosition (pos: SCNVector3, camera: ARCamera?) -> Float {
+    func copy(with zone: NSZone? = nil) -> Any {
+        let new_line_node: LineNode = LineNode(startNode: startNode.clone(), endNode: endNode.clone(), lineNode: lineNode?.clone(), sceneView: sceneView)
+        return new_line_node
+    }
+    
+    public func updateHeight(newHeight: Float){
+        //lineNode?.position.y += 0.0001
+        
+        
+        startNode.position.y = newHeight
+        endNode.position.y = newHeight
+        lineNode?.removeFromParentNode()
+        lineNode = lineBetweenNodes(node1: startNode, node2: endNode)
+        sceneView?.scene.rootNode.addChildNode(lineNode!)
+        
+        //lineNode?.scale = SCNVector3(1.5, 1.0, 1.0)
+        
+        //lineNode?.transform = SCNMatrix4MakeTranslation(1.0, Float(newHeight / 2.0), 1.0)
+    }
+    
+    
+    public func updatePosition (pos: SCNVector3, camera: ARCamera?, is_hidden: Bool = false) -> Float {
         let posEnd = updateTransform(for: pos, camera: camera)
         
         if endNode.parent == nil {
@@ -57,6 +89,7 @@ class LineNode: NSObject {
         
         lineNode?.removeFromParentNode()
         lineNode = lineBetweenNodes(node1: startNode, node2: endNode)
+        lineNode?.isHidden = is_hidden
         sceneView?.scene.rootNode.addChildNode(lineNode!)
         
         return 0.0
@@ -76,28 +109,8 @@ class LineNode: NSObject {
     }
     
     private func updateTransform(for position: SCNVector3, camera: ARCamera?) -> SCNVector3 {
-        recentFocusSquarePositions.append(position)
-        recentFocusSquarePositions.keepLast(1)
-        
-        if let average = recentFocusSquarePositions.first {
-            return average
-        }
-        
-        return SCNVector3Zero
+        //Currently does not do any updating lol
+        return position
+//        return SCNVector3Zero
     }
-    
-    private func normalize(_ angle: Float, forMinimalRotationTo ref: Float) -> Float {
-
-        var normalized = angle
-        while abs(normalized - ref) > Float.pi / 4 {
-            if angle > ref {
-                normalized -= Float.pi / 2
-            } else {
-                normalized += Float.pi / 2
-            }
-        }
-        return normalized
-    }
-    
-    
 }

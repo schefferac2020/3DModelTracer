@@ -42,4 +42,33 @@ extension SCNGeometry {
                                           atan2(to.y - from.y, to.x - from.x))
         return lineNode
     }
+    
+    class func rectLine(from: SCNVector3, to: SCNVector3, color: UIColor = .white, width: Float = 0.01) -> SCNNode {
+        let wid = CGFloat(width)
+        let x1 = from.x
+        let x2 = to.x
+        
+        let y1 = from.y
+        let y2 = to.y
+        
+        let z1 = from.z
+        let z2 = to.z
+
+        let distance = sqrtf((x2 - x1) * (x2 - x1) +
+                             (y2 - y1) * (y2 - y1) +
+                             (z2 - z1) * (z2 - z1))
+
+        let rect = SCNBox(width: wid, height: CGFloat(distance), length: wid, chamferRadius: 0.0)
+        //cylinder.radialSegmentCount = segments
+        rect.firstMaterial?.diffuse.contents = color
+
+        let lineNode = SCNNode(geometry: rect)
+        lineNode.position = SCNVector3(((from.x + to.x)/2),
+                                       ((from.y + to.y)/2),
+                                       ((from.z + to.z)/2))
+        lineNode.eulerAngles = SCNVector3(Float.pi/2,
+                                          acos((to.z - from.z)/distance),
+                                          atan2(to.y - from.y, to.x - from.x))
+        return lineNode
+    }
 }

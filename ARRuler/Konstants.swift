@@ -15,7 +15,8 @@ struct K {
             static let red = #imageLiteral(resourceName: "World")
         }
         
-        
+        static let done = #imageLiteral(resourceName: "backArrow")
         static let place = #imageLiteral(resourceName: "house")
+        static let export = #imageLiteral(resourceName: "userIcon")
     }
 }

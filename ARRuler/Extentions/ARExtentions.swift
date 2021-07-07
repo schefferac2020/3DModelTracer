@@ -18,7 +18,7 @@ extension SCNVector3{
 extension ARSCNView {
     func worldPositionFromScreenPosition(_ position: CGPoint,
                                          objectPos: SCNVector3?,
-                                         infinitePlane: Bool = false) -> (position: SCNVector3?, planeAnchor: ARPlaneAnchor?, hitAPlane: Bool) {
+                                         infinitePlane: Bool = false) -> (world_transform: simd_float4x4?, planeAnchor: ARPlaneAnchor?, hitAPlane: Bool) {
         
         let sceneView = self
         
@@ -26,8 +26,8 @@ extension ARSCNView {
         let hitTestResults = sceneView.hitTest(position, types: .featurePoint)
         if let hitResult = hitTestResults.first{
             let planeHitPosition = SCNVector3.transformToPosition(hitResult.worldTransform)
-            
-            return (planeHitPosition, nil, false)
+            let planeAnchor = hitResult.anchor
+            return (hitResult.worldTransform, planeAnchor as? ARPlaneAnchor, false)
         }
         
         return (nil, nil, false)
@@ -54,13 +54,5 @@ extension Array where Iterator.Element == SCNVector3 {
         ret.z /= fcount
         
         return ret
-    }
-}
-
-extension RangeReplaceableCollection {
-    mutating func keepLast(_ elementsToKeep: Int) {
-        if count > elementsToKeep {
-            self.removeFirst(count - elementsToKeep)
-        }
     }
 }
