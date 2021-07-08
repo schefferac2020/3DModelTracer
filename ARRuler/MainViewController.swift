@@ -375,7 +375,7 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
         
         if (drawing_state == DrawingState.EXTENDING){ //We have completed a 3d figure
             drawing_state = DrawingState.NOT_SET
-            objectFactory.createObjectFormattedString()
+            objectFactory.createObjectFormattedString(allLineGroups: allLineGroups)
             return
         }
         

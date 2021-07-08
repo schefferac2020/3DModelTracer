@@ -4,39 +4,79 @@
 //
 //  Created by Drew Scheffer on 7/7/21.
 //
-
+import UIKit
+import SceneKit
+import ARKit
 import Foundation
+import Vision
+
 
 class ObjectFactory{
     var object_string : String?
     
-    func createObjectFormattedString() {
-        var writeString = "v 0.000000 2.000000 0.000000\n"
-        writeString += "v 0.000000 0.000000 0.000000\n"
-        writeString += "v 2.000000 0.000000 0.000000\n"
-        writeString += "v 2.000000 2.000000 0.000000\n"
-        writeString += "v 4.000000 0.000000 -1.255298\n"
-        writeString += "v 4.000000 2.000000 -1.255298\n"
-        writeString += "v 2.000000 0.000000 -2.000000\n"
-        writeString += "v 2.000000 2.000000 -2.000000\n"
+    func createObjectFormattedString(allLineGroups: [LineGroup]) {
 
-        writeString += "v 0.000000 0.000000 -2.000000\n"
-        writeString += "v 0.000000 2.000000 -2.000000\n"
-
-
-        writeString += "# 6 vertices\n"
-
-        writeString += "g all\n"
-        writeString += "s 1\n"
-        writeString += "f 1 2 3 4\n"
-        writeString += "f 4 3 5 6\n"
-        writeString += "f 6 5 7 8\n"
-        writeString += "f 8 7 9 10\n"
-        writeString += "f 10 9 2 1\n"
-        writeString += "f 1 4 6 8 10\n"
+        let bottom : LineGroup = allLineGroups[0]
+        let top : LineGroup = allLineGroups[1]
+        let start_point = top.finalLine!.startNode.position
+        
+        var object_bottom_positions: [SCNVector3] = []
+        
+        for line in top.lines {
+            let current_pos = line.startNode.position
+            object_bottom_positions.append(current_pos - start_point) // makes it relative to first point
+        }
+        object_bottom_positions.append(top.finalLine!.endNode.position - start_point)
+        
+        let height = top.finalLine!.startNode.position.y - bottom.finalLine!.startNode.position.y
         
         
-        self.object_string = writeString
+        let num_verts = object_bottom_positions.count * 2
+        var object_string = "#\(num_verts) verticies\n"
+        
+        //Add the vertexes
+        object_string += "v \(object_bottom_positions[0].x) \(object_bottom_positions[0].y + height) \(object_bottom_positions[0].z)\n"
+        object_string += "v \(object_bottom_positions[0].x) \(object_bottom_positions[0].y) \(object_bottom_positions[0].z)\n"
+        
+        for i in 1..<object_bottom_positions.count{
+            object_string += "v \(object_bottom_positions[i].x) \(object_bottom_positions[i].y) \(object_bottom_positions[i].z)\n"
+            object_string += "v \(object_bottom_positions[i].x) \(object_bottom_positions[i].y + height) \(object_bottom_positions[i].z)\n"
+        }
+        
+        //Additional Settings
+        
+        object_string += "\n\ng all\ns 1\n"
+        
+        //Add the faces
+        object_string += "f 1 2 3 4\n"
+        object_string += "f 4 3 2 1\n"
+        var curr_ind = 4
+        
+        
+        while (curr_ind < num_verts){
+            object_string += "f \(curr_ind) \(curr_ind-1) \(curr_ind + 1) \(curr_ind+2)\n"
+            object_string += "f \(curr_ind+2) \(curr_ind+1) \(curr_ind-1) \(curr_ind)\n"
+            curr_ind += 2
+        }
+        
+        object_string += "f 1 2 \(num_verts - 1) \(num_verts)\n"
+        object_string += "f \(num_verts) \(num_verts - 1) 2 1\n"
+        
+        
+        var last_face = "2 "
+        var last_face_revd = "2"
+        curr_ind = 3
+        
+        while (curr_ind < num_verts){
+            last_face += "\(curr_ind) "
+            last_face_revd = "\(curr_ind) " + last_face_revd
+            curr_ind += 2
+        }
+        
+        object_string += "f \(last_face)\n"
+        object_string += "f \(last_face_revd)\n"
+        
+        self.object_string = object_string
         
     }
 }
