@@ -12,15 +12,17 @@ import Vision
 
 
 class ObjectFactory{
-    var object_string : String?
+    static var object_string : String?
     
-    func createObjectFormattedString(allLineGroups: [LineGroup]) {
-
+    static var height: Float?
+    static var object_bottom_positions: [SCNVector3] = []
+    static var fake_object_bottom_positions: [SCNVector3] = [SCNVector3(0.5, 0, 0), SCNVector3(0, 0, 1), SCNVector3(1, 0, 1)]
+    
+    static func generate_points(allLineGroups: [LineGroup]) -> Void {
+        object_bottom_positions = []
         let bottom : LineGroup = allLineGroups[0]
         let top : LineGroup = allLineGroups[1]
         let start_point = top.finalLine!.startNode.position
-        
-        var object_bottom_positions: [SCNVector3] = []
         
         for line in top.lines {
             let current_pos = line.startNode.position
@@ -28,23 +30,23 @@ class ObjectFactory{
         }
         object_bottom_positions.append(top.finalLine!.endNode.position - start_point)
         
-        let height = top.finalLine!.startNode.position.y - bottom.finalLine!.startNode.position.y
-        
-        
+        height = top.finalLine!.startNode.position.y - bottom.finalLine!.startNode.position.y
+    }
+    
+    static func createObjectFormattedString() { // MUST call this after generating the points
         let num_verts = object_bottom_positions.count * 2
         var object_string = "#\(num_verts) verticies\n"
         
         //Add the vertexes
-        object_string += "v \(object_bottom_positions[0].x) \(object_bottom_positions[0].y + height) \(object_bottom_positions[0].z)\n"
+        object_string += "v \(object_bottom_positions[0].x) \(object_bottom_positions[0].y + height!) \(object_bottom_positions[0].z)\n"
         object_string += "v \(object_bottom_positions[0].x) \(object_bottom_positions[0].y) \(object_bottom_positions[0].z)\n"
         
         for i in 1..<object_bottom_positions.count{
             object_string += "v \(object_bottom_positions[i].x) \(object_bottom_positions[i].y) \(object_bottom_positions[i].z)\n"
-            object_string += "v \(object_bottom_positions[i].x) \(object_bottom_positions[i].y + height) \(object_bottom_positions[i].z)\n"
+            object_string += "v \(object_bottom_positions[i].x) \(object_bottom_positions[i].y + height!) \(object_bottom_positions[i].z)\n"
         }
         
         //Additional Settings
-        
         object_string += "\n\ng all\ns 1\n"
         
         //Add the faces

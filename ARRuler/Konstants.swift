@@ -19,4 +19,8 @@ struct K {
         static let place = #imageLiteral(resourceName: "house")
         static let export = #imageLiteral(resourceName: "userIcon")
     }
+    struct Segues {
+        static let toModify = "ToModify"
+        //static let backToCamera = "backToCamera"
+    }
 }

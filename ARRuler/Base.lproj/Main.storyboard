@@ -18,15 +18,126 @@
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <segue destination="XAh-44-3yU" kind="presentation" identifier="ToModify" modalPresentationStyle="fullScreen" id="G9c-TJ-5aV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-196" y="86"/>
+            <point key="canvasLocation" x="-204" y="70"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="6dk-Ip-Rol">
+            <objects>
+                <viewController id="3aA-6a-nAs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="efG-3o-wFf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9hR-Wc-5Nn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="lLr-VR-pzS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E7B-HU-h8S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1683" y="446"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="W4Y-5q-fZB">
+            <objects>
+                <viewController id="dOT-cg-eeo" customClass="Modify2DViewController" customModule="ARRuler" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5do-GC-hja">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Hip-uF-NzN">
+                                <rect key="frame" x="51.5" y="71" width="311" height="36"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTO-Lh-RLO">
+                                        <rect key="frame" x="0.0" y="0.0" width="19.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="tintColor" red="0.96078431369999995" green="0.63529411759999999" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="arrow.backward" catalog="system"/>
+                                        <connections>
+                                            <action selector="backToCameraButtonPressed:" destination="dOT-cg-eeo" eventType="touchUpInside" id="rNU-op-OKB"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2D Floorplan View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erY-wd-vEA">
+                                        <rect key="frame" x="50.5" y="0.0" width="211.5" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                        <color key="textColor" systemColor="systemOrangeColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-Fm-ppR">
+                                        <rect key="frame" x="293" y="0.0" width="18" height="36"/>
+                                        <color key="tintColor" red="0.96078431369999995" green="0.63529411759999999" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="arrow.counterclockwise" catalog="system"/>
+                                        <connections>
+                                            <action selector="resetButtonPressed:" destination="dOT-cg-eeo" eventType="touchUpInside" id="CW3-po-doS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fi-kj-9Lh" customClass="RoundedButton" customModule="ARRuler" customModuleProvider="target">
+                                <rect key="frame" x="63.5" y="689" width="287" height="68"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="287" id="I7w-EE-oSt"/>
+                                    <constraint firstAttribute="height" constant="68" id="bel-mj-1mq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <state key="normal" title="Create Object">
+                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="createObjectPressed:" destination="dOT-cg-eeo" eventType="touchUpInside" id="6vk-ge-E32"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Yf7-um-Rcz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5fi-kj-9Lh" firstAttribute="centerX" secondItem="5do-GC-hja" secondAttribute="centerX" id="1jk-Hk-qzF"/>
+                            <constraint firstItem="Hip-uF-NzN" firstAttribute="top" secondItem="Yf7-um-Rcz" secondAttribute="top" constant="27" id="C1n-8b-eMh"/>
+                            <constraint firstItem="Yf7-um-Rcz" firstAttribute="bottom" secondItem="5fi-kj-9Lh" secondAttribute="bottom" constant="56" id="fOH-x2-RV3"/>
+                            <constraint firstItem="Hip-uF-NzN" firstAttribute="centerX" secondItem="5do-GC-hja" secondAttribute="centerX" id="h8f-sL-BLv"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="RU6-t9-0UK"/>
+                    <connections>
+                        <outlet property="makeModelButton" destination="5fi-kj-9Lh" id="3b6-7k-AOg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VUc-FQ-i6c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1682.608695652174" y="-263.16964285714283"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="qIp-Jj-Sen">
+            <objects>
+                <tabBarController id="XAh-44-3yU" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cyS-7u-vLV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="dOT-cg-eeo" kind="relationship" relationship="viewControllers" id="PN8-u1-bxI"/>
+                        <segue destination="3aA-6a-nAs" kind="relationship" relationship="viewControllers" id="eRR-MT-paX"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OIz-D7-ARn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="716" y="70"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
+        <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

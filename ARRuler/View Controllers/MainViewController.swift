@@ -20,9 +20,9 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
     //@IBOutlet var sceneView: ARSCNView!
     var drawing_state = DrawingState.NOT_SET
     
-    private var linesGroup: LineGroup?
-    private var topLinesGroup: LineGroup?
-    private var allLineGroups: [LineGroup] = []
+    var linesGroup: LineGroup?
+    var topLinesGroup: LineGroup?
+    var allLineGroups: [LineGroup] = []
     var connectors: [SCNNode] = []
     
     let path = UIBezierPath()
@@ -37,8 +37,6 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
     var screenCenter: CGPoint?
     var focusSquare: FocusSquare?
     
-    var objectFileUrl: URL?
-    var objectFactory = ObjectFactory()
     
     var areaValue: Double? {
         didSet{
@@ -58,18 +56,7 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
         super.viewDidLoad()
         addPinchGesture()
         layout_view()
-        
-        setupObjFile()
-        
-    }
-    
-    func setupObjFile() {
-        let fileName = "layoutObject"
-        let DocumentDirUrl = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        
-        objectFileUrl = DocumentDirUrl.appendingPathComponent(fileName).appendingPathExtension("obj")
-        
-        print("File Path: \(objectFileUrl!.path)")
+                
     }
     
     func layout_view(){
@@ -191,8 +178,8 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
     }
     
     private func addPinchGesture() {
-            let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(didPinch(_:)))
-            self.sceneView.addGestureRecognizer(pinchGesture)
+//            let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(didPinch(_:)))
+//            self.sceneView.addGestureRecognizer(pinchGesture)
     }
     
     func updateFocusSquare() {
@@ -375,7 +362,7 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
         
         if (drawing_state == DrawingState.EXTENDING){ //We have completed a 3d figure
             drawing_state = DrawingState.NOT_SET
-            objectFactory.createObjectFormattedString(allLineGroups: allLineGroups)
+            ObjectFactory.generate_points(allLineGroups: allLineGroups)
             return
         }
         
@@ -396,35 +383,35 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
     
     func exportObject(_ sender: UIButton) {
         //Write all of the feature points to a string
-        let writeStringProb = objectFactory.object_string
+        resetEverything()
+        performSegue(withIdentifier: K.Segues.toModify, sender: nil)
+    }
+    
+    func resetEverything() {
+        drawing_state = DrawingState.NOT_SET
         
-        guard let writeString = writeStringProb else { return; }
+        self.linesGroup = nil
+        self.topLinesGroup = nil
+        self.allLineGroups = []
         
-        do {
-            try writeString.write(to: objectFileUrl!, atomically: true, encoding: String.Encoding.utf8)
-            
-        }catch let error as NSError {
-            print("Failed to write the URL")
-            print(error)
+        for connector in connectors{
+            connector.removeFromParentNode()
         }
+        self.connectors = []
         
-        //Present and export
-        let path = objectFileUrl!.path
-        let activityItem:NSURL = NSURL(fileURLWithPath: path)
-        let activityVC = UIActivityViewController(activityItems: [activityItem], applicationActivities: nil)
-        present(activityVC, animated: true, completion: nil)
+        areaValue = 0.00
     }
     
     
     
-    func didPinch(_ gesture: UIPinchGestureRecognizer) {
-//        allLineGroups[0].update_heights()
-//        if (allLineGroups.count < 2){
-//            let new_group : LineGroup =  allLineGroups[0].copy() as! LineGroup
-//            allLineGroups.append(new_group)
-//            allLineGroups[1] = new_group
-//
-//        }
-        allLineGroups[1].update_heights(newHeights: 0.1)
-    }
+//    func didPinch(_ gesture: UIPinchGestureRecognizer) {
+////        allLineGroups[0].update_heights()
+////        if (allLineGroups.count < 2){
+////            let new_group : LineGroup =  allLineGroups[0].copy() as! LineGroup
+////            allLineGroups.append(new_group)
+////            allLineGroups[1] = new_group
+////
+////        }
+//        allLineGroups[1].update_heights(newHeights: 0.1)
+//    }
 }

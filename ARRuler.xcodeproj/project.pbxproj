@@ -25,6 +25,9 @@
 		C3DF5F42266BD13600CE545F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3DF5F40266BD13600CE545F /* Main.storyboard */; };
 		C3DF5F44266BD13900CE545F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3DF5F43266BD13900CE545F /* Assets.xcassets */; };
 		C3DF5F47266BD13900CE545F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3DF5F45266BD13900CE545F /* LaunchScreen.storyboard */; };
+		C3EBBF08269A1A10006CCD95 /* Modify2DViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBF07269A1A10006CCD95 /* Modify2DViewController.swift */; };
+		C3EBBF0E269A1B7B006CCD95 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBF0D269A1B7B006CCD95 /* CircleView.swift */; };
+		C3EBBF13269A340A006CCD95 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EBBF12269A340A006CCD95 /* RoundedButton.swift */; };
 		C3EC167F266D4D03002DE69D /* LineExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EC167E266D4D03002DE69D /* LineExtention.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +52,9 @@
 		C3DF5F43266BD13900CE545F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3DF5F46266BD13900CE545F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3DF5F48266BD13900CE545F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3EBBF07269A1A10006CCD95 /* Modify2DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modify2DViewController.swift; sourceTree = "<group>"; };
+		C3EBBF0D269A1B7B006CCD95 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		C3EBBF12269A340A006CCD95 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		C3EC167E266D4D03002DE69D /* LineExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineExtention.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +85,7 @@
 				C31036F2268A96550038C3BF /* ARSCNView+HitTests.swift */,
 				C31036F3268A96550038C3BF /* TextManager.swift */,
 				C31036F4268A96550038C3BF /* SceneExtensions.swift */,
+				C3EC167E266D4D03002DE69D /* LineExtention.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -89,6 +96,7 @@
 				C31036F0268A96550038C3BF /* Utilities */,
 				C347BBBB266FF624006E3697 /* UIExtentions.swift */,
 				C347BBBE26700C10006E3697 /* ARExtentions.swift */,
+				C3EBBF12269A340A006CCD95 /* RoundedButton.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -114,20 +122,37 @@
 			children = (
 				C3DF5F3A266BD13600CE545F /* AppDelegate.swift */,
 				C3DF5F3C266BD13600CE545F /* art.scnassets */,
-				C3DF5F3E266BD13600CE545F /* MainViewController.swift */,
+				C3EBBF05269A19EC006CCD95 /* View Controllers */,
 				C3DF5F40266BD13600CE545F /* Main.storyboard */,
 				C3DF5F43266BD13900CE545F /* Assets.xcassets */,
+				C3EBBF0D269A1B7B006CCD95 /* CircleView.swift */,
 				C3DF5F45266BD13900CE545F /* LaunchScreen.storyboard */,
 				C3DF5F48266BD13900CE545F /* Info.plist */,
-				C3EC167E266D4D03002DE69D /* LineExtention.swift */,
 				C347BBB8266FF287006E3697 /* Konstants.swift */,
 				C393603B2696638600C5FD07 /* ObjectFactory.swift */,
 				C31036E9268A95320038C3BF /* Focus Squares */,
 				C347BBC126700C17006E3697 /* Extentions */,
+				C3EBBF0B269A1B28006CCD95 /* ARClasses */,
+			);
+			path = ARRuler;
+			sourceTree = "<group>";
+		};
+		C3EBBF05269A19EC006CCD95 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C3DF5F3E266BD13600CE545F /* MainViewController.swift */,
+				C3EBBF07269A1A10006CCD95 /* Modify2DViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		C3EBBF0B269A1B28006CCD95 /* ARClasses */ = {
+			isa = PBXGroup;
+			children = (
 				C347BBC32670107B006E3697 /* LineNode.swift */,
 				C37398552673EC8600B37727 /* LineGroup.swift */,
 			);
-			path = ARRuler;
+			path = ARClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +237,10 @@
 				C31036EC268A95320038C3BF /* FocusSquareSegment.swift in Sources */,
 				C347BBBF26700C10006E3697 /* ARExtentions.swift in Sources */,
 				C347BBBC266FF624006E3697 /* UIExtentions.swift in Sources */,
+				C3EBBF0E269A1B7B006CCD95 /* CircleView.swift in Sources */,
 				C393603C2696638600C5FD07 /* ObjectFactory.swift in Sources */,
+				C3EBBF13269A340A006CCD95 /* RoundedButton.swift in Sources */,
+				C3EBBF08269A1A10006CCD95 /* Modify2DViewController.swift in Sources */,
 				C347BBB9266FF287006E3697 /* Konstants.swift in Sources */,
 				C37398562673EC8600B37727 /* LineGroup.swift in Sources */,
 				C31036ED268A95320038C3BF /* FocusSquare.swift in Sources */,
