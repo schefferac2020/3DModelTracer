@@ -1,6 +1,10 @@
 # ModelMaker iOS App
 
-Uploading RPReplay_Final1626118180.mov…
+
+
+https://user-images.githubusercontent.com/54146662/125348139-d7494680-e329-11eb-8f51-43cf61fe951a.mp4
+
+
 
 This app uses apple's ARKit to place feature points in the scene to create 3d objects (specifically floor plans) that can be exported as .obj files by the user. The app uses the feature points determined by the user to make a to-scale representation of a simple 3D polygon.
 
