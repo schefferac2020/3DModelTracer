@@ -11,7 +11,7 @@ import UIKit
 struct K {
     struct Image {
         struct Indicator {
-            static let green = #imageLiteral(resourceName: "house")
+            static let green = #imageLiteral(resourceName: "circle")
             static let red = #imageLiteral(resourceName: "World")
         }
         

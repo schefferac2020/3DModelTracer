@@ -10,7 +10,7 @@ import UIKit
 
 class RoundedButton: UIButton {
     
-    var borderColor = UIColor.white.cgColor
+    var borderColor = UIColor.clear.cgColor
     
     var highlightedColor = UIColor.white {
         didSet{

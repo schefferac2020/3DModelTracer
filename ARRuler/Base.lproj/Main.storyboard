@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,32 +16,127 @@
                     <view key="view" contentMode="scaleToFill" id="U0K-SW-4ec">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="lOK-ve-y5G">
+                                <rect key="frame" x="12" y="796" width="390" height="66"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DjZ-Jt-eSW" customClass="RoundedButton" customModule="ARRuler" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="Diq-E7-kdh"/>
+                                            <constraint firstAttribute="width" constant="66" id="n6i-vP-WyE"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <color key="titleColor" systemColor="systemOrangeColor"/>
+                                            <imageReference key="image" image="checkmark" catalog="system" symbolScale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="createObjectPressed:" destination="dOT-cg-eeo" eventType="touchUpInside" id="r9I-ih-J1Z"/>
+                                            <action selector="finishButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ShN-Qm-zFc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0rw-tw-aaG" customClass="RoundedButton" customModule="ARRuler" customModuleProvider="target">
+                                        <rect key="frame" x="113" y="0.0" width="164" height="66"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="9bd-dv-oe0"/>
+                                            <constraint firstAttribute="width" constant="164" id="DyO-W4-Kxb"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <color key="titleColor" systemColor="systemOrangeColor"/>
+                                            <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="createObjectPressed:" destination="dOT-cg-eeo" eventType="touchUpInside" id="SJw-r0-72V"/>
+                                            <action selector="placeButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="G3j-LO-cQN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZc-v8-UoJ" customClass="RoundedButton" customModule="ARRuler" customModuleProvider="target">
+                                        <rect key="frame" x="324" y="0.0" width="66" height="66"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="Bpl-Dm-HyM"/>
+                                            <constraint firstAttribute="width" constant="66" id="Hxz-54-Ige"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <color key="titleColor" systemColor="systemOrangeColor"/>
+                                            <imageReference key="image" image="ellipsis" catalog="system" symbolScale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="createObjectPressed:" destination="dOT-cg-eeo" eventType="touchUpInside" id="4A0-yg-80g"/>
+                                            <action selector="moreButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Afy-OW-0u7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="WkB-Zh-k7P">
+                                <rect key="frame" x="336" y="615" width="66" height="158"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ywy-2b-zOX" customClass="RoundedButton" customModule="ARRuler" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="5Hh-MU-IYr"/>
+                                            <constraint firstAttribute="width" constant="66" id="zkS-r9-iy0"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <color key="titleColor" systemColor="systemOrangeColor"/>
+                                            <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="createObjectPressed:" destination="dOT-cg-eeo" eventType="touchUpInside" id="uvn-OO-04M"/>
+                                            <action selector="shareButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="xvw-Ve-tfn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vq1-be-el8" customClass="RoundedButton" customModule="ARRuler" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="66" height="66"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="G20-oq-Bjv"/>
+                                            <constraint firstAttribute="width" constant="66" id="hQ1-Z1-P91"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal">
+                                            <color key="titleColor" systemColor="systemOrangeColor"/>
+                                            <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="createObjectPressed:" destination="dOT-cg-eeo" eventType="touchUpInside" id="tjB-Mc-h47"/>
+                                            <action selector="redoButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="8cm-DL-nAz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lOK-ve-y5G" firstAttribute="centerX" secondItem="U0K-SW-4ec" secondAttribute="centerX" id="6Vo-Li-gMH"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="WkB-Zh-k7P" secondAttribute="trailing" constant="12" id="Pfj-X1-5Ud"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="trailing" secondItem="lOK-ve-y5G" secondAttribute="trailing" constant="12" id="Y5R-Us-bfj"/>
+                            <constraint firstItem="fQZ-KI-GVf" firstAttribute="bottom" secondItem="lOK-ve-y5G" secondAttribute="bottom" id="ieQ-l7-ZzK"/>
+                            <constraint firstItem="zZc-v8-UoJ" firstAttribute="top" secondItem="WkB-Zh-k7P" secondAttribute="bottom" constant="23" id="od3-hC-4Ff"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="addPointButton" destination="0rw-tw-aaG" id="x6I-MV-3rH"/>
+                        <outlet property="completedButton" destination="DjZ-Jt-eSW" id="bgt-0a-2j9"/>
+                        <outlet property="horizStack" destination="lOK-ve-y5G" id="nT5-cA-Dl3"/>
+                        <outlet property="moreButton" destination="zZc-v8-UoJ" id="mvl-kq-aLT"/>
+                        <outlet property="redoButton" destination="vq1-be-el8" id="b6t-jd-eQf"/>
+                        <outlet property="shareButton" destination="Ywy-2b-zOX" id="Mkp-PQ-970"/>
+                        <outlet property="vertStack" destination="WkB-Zh-k7P" id="ehy-5l-QCC"/>
                         <segue destination="XAh-44-3yU" kind="presentation" identifier="ToModify" modalPresentationStyle="fullScreen" id="G9c-TJ-5aV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="70"/>
-        </scene>
-        <!--Item 2-->
-        <scene sceneID="6dk-Ip-Rol">
-            <objects>
-                <viewController id="3aA-6a-nAs" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="efG-3o-wFf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="9hR-Wc-5Nn"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="lLr-VR-pzS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="E7B-HU-h8S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1683" y="446"/>
+            <point key="canvasLocation" x="-204.34782608695653" y="69.642857142857139"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="W4Y-5q-fZB">
@@ -51,27 +147,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Hip-uF-NzN">
-                                <rect key="frame" x="51.5" y="71" width="311" height="36"/>
+                                <rect key="frame" x="47.5" y="71" width="319.5" height="36"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTO-Lh-RLO">
-                                        <rect key="frame" x="0.0" y="0.0" width="19.5" height="36"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <color key="tintColor" red="0.96078431369999995" green="0.63529411759999999" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" image="arrow.backward" catalog="system"/>
+                                        <color key="tintColor" red="0.98431372549999996" green="0.57647058819999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="arrow.backward" catalog="system" symbolScale="large"/>
+                                        </state>
                                         <connections>
                                             <action selector="backToCameraButtonPressed:" destination="dOT-cg-eeo" eventType="touchUpInside" id="rNU-op-OKB"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2D Floorplan View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erY-wd-vEA">
-                                        <rect key="frame" x="50.5" y="0.0" width="211.5" height="36"/>
+                                        <rect key="frame" x="55" y="0.0" width="211.5" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                        <color key="textColor" systemColor="systemOrangeColor"/>
+                                        <color key="textColor" red="0.98431372549019602" green="0.57647058823529407" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oxk-Fm-ppR">
-                                        <rect key="frame" x="293" y="0.0" width="18" height="36"/>
-                                        <color key="tintColor" red="0.96078431369999995" green="0.63529411759999999" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" image="arrow.counterclockwise" catalog="system"/>
+                                        <rect key="frame" x="297.5" y="0.0" width="22" height="36"/>
+                                        <color key="tintColor" red="0.98431372549999996" green="0.57647058819999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
+                                            <imageReference key="image" image="arrow.counterclockwise" catalog="system" symbolScale="large"/>
+                                        </state>
                                         <connections>
                                             <action selector="resetButtonPressed:" destination="dOT-cg-eeo" eventType="touchUpInside" id="CW3-po-doS"/>
                                         </connections>
@@ -80,13 +180,14 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fi-kj-9Lh" customClass="RoundedButton" customModule="ARRuler" customModuleProvider="target">
                                 <rect key="frame" x="63.5" y="689" width="287" height="68"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="287" id="I7w-EE-oSt"/>
                                     <constraint firstAttribute="height" constant="68" id="bel-mj-1mq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <state key="normal" title="Create Object">
-                                    <color key="titleColor" systemColor="systemOrangeColor"/>
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="createObjectPressed:" destination="dOT-cg-eeo" eventType="touchUpInside" id="6vk-ge-E32"/>
@@ -102,7 +203,7 @@
                             <constraint firstItem="Hip-uF-NzN" firstAttribute="centerX" secondItem="5do-GC-hja" secondAttribute="centerX" id="h8f-sL-BLv"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="RU6-t9-0UK"/>
+                    <tabBarItem key="tabBarItem" title="Item 1" selectedImage="square.and.arrow.down.fill" catalog="system" id="RU6-t9-0UK"/>
                     <connections>
                         <outlet property="makeModelButton" destination="5fi-kj-9Lh" id="3b6-7k-AOg"/>
                     </connections>
@@ -122,7 +223,6 @@
                     </tabBar>
                     <connections>
                         <segue destination="dOT-cg-eeo" kind="relationship" relationship="viewControllers" id="PN8-u1-bxI"/>
-                        <segue destination="3aA-6a-nAs" kind="relationship" relationship="viewControllers" id="eRR-MT-paX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIz-D7-ARn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -133,6 +233,12 @@
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <image name="arrow.counterclockwise" catalog="system" width="115" height="128"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -12,6 +12,7 @@ import ARKit
 
 class LineNode: NSObject, NSCopying {
     
+    let good_orange = UIColor(red: 251/255, green: 147/255, blue: 0/255, alpha: 1.0)
     
     let startNode: SCNNode
     let endNode: SCNNode
@@ -30,12 +31,12 @@ class LineNode: NSObject, NSCopying {
         
         self.sceneView = scnView
         
-        startNode = SCNNode(geometry: buildSphere(color: .blue))
+        startNode = SCNNode(geometry: buildSphere(color: good_orange))
         startNode.scale = SCNVector3(1/400.0, 1/400.0, 1/400.0)
         startNode.position = startPos
         sceneView?.scene.rootNode.addChildNode(startNode)
         
-        endNode = SCNNode(geometry: buildSphere(color: .red))
+        endNode = SCNNode(geometry: buildSphere(color: good_orange))
         endNode.scale = SCNVector3(1/400.0, 1/400.0, 1/400.0)
         
         lineNode = nil

@@ -17,6 +17,13 @@ enum DrawingState {
 
 class MainViewController: UIViewController, ARSCNViewDelegate {
 
+    
+    let orange_clickable = UIColor(red: 251/255, green: 147/255, blue: 0/255, alpha: 1.0)
+    let orange_disabled = UIColor(red: 251/255, green: 147/255, blue: 0/255, alpha: 0.5)
+    
+    let red_enabled = UIColor(red: 245/255, green: 71/255, blue: 72/255, alpha: 1.0)
+    let red_disabled = UIColor(red: 245/255, green: 71/255, blue: 72/255, alpha: 0.5)
+    
     //@IBOutlet var sceneView: ARSCNView!
     var drawing_state = DrawingState.NOT_SET
     
@@ -29,14 +36,20 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
     
     private let sceneView: ARSCNView =  ARSCNView(frame: UIScreen.main.bounds)
     private let indicator = UIImageView()
-    private let setPointButton = UIButton()
-    private let finishedButton = UIButton()
-    private let exportButton = UIButton()
     private let resultLabel = UILabel()
+    
+    @IBOutlet weak var addPointButton: RoundedButton!
+    @IBOutlet weak var completedButton: RoundedButton!
+    @IBOutlet weak var moreButton: RoundedButton!
+    @IBOutlet weak var horizStack: UIStackView!
+    @IBOutlet weak var shareButton: RoundedButton!
+    @IBOutlet weak var redoButton: RoundedButton!
+    @IBOutlet weak var vertStack: UIStackView!
     
     var screenCenter: CGPoint?
     var focusSquare: FocusSquare?
     
+    var moreToggled: Bool = false
     
     var areaValue: Double? {
         didSet{
@@ -54,7 +67,6 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addPinchGesture()
         layout_view()
                 
     }
@@ -83,27 +95,14 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
         
         view.addSubview(resultLabelView)
         
-        indicator.image = K.Image.Indicator.red
+        indicator.image = K.Image.Indicator.green
+        // = orange_clickable
+        
+        indicator.image = indicator.image?.withRenderingMode(.alwaysTemplate)
+        indicator.tintColor = orange_clickable
+        
         indicator.frame = CGRect(x: (width - 60)/2, y: (height - 60)/2, width: 60, height: 60)
         view.addSubview(indicator)
-        
-        setPointButton.contentMode = .scaleAspectFill
-        setPointButton.setBackgroundImage(K.Image.place, for: .normal)
-        setPointButton.frame = CGRect(x: (width - 100)/2, y: (height - 100 - 20), width: 100, height: 100)
-        setPointButton.addTarget(self, action: #selector(MainViewController.placePoint(_:)), for: .touchUpInside)
-        view.addSubview(setPointButton)
-        
-        finishedButton.contentMode = .scaleAspectFill
-        finishedButton.setBackgroundImage(K.Image.done, for: .normal)
-        finishedButton.frame = CGRect(x: (width - 300)/2, y: (height - 100 - 20), width: 60, height: 60)
-        finishedButton.addTarget(self, action: #selector(MainViewController.finishAction(_:)), for: .touchUpInside)
-        view.addSubview(finishedButton)
-        
-        exportButton.contentMode = .scaleAspectFill
-        exportButton.setBackgroundImage(K.Image.export, for: .normal)
-        exportButton.frame = CGRect(x: (width + 200)/2, y: (height - 100 - 20), width: 60, height: 60)
-        exportButton.addTarget(self, action: #selector(MainViewController.exportObject(_:)), for: .touchUpInside)
-        view.addSubview(exportButton)
         
         resultLabel.textAlignment = .center
         resultLabel.textColor = .black
@@ -112,6 +111,27 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
         resultLabel.frame = resultLabelView.frame.insetBy(dx: 10, dy: 10)
         resultLabel.text = "0.0 cm^2"
         view.addSubview(resultLabel)
+        
+        addPointButton.defaultColor = orange_clickable
+        addPointButton.highlightedColor = orange_disabled
+        
+        completedButton.defaultColor = orange_disabled
+        completedButton.highlightedColor = orange_disabled
+        
+        moreButton.defaultColor = orange_clickable
+        moreButton.highlightedColor = orange_disabled
+        
+        shareButton.defaultColor = orange_clickable
+        shareButton.highlightedColor = orange_disabled
+        
+        redoButton.defaultColor = red_enabled
+        redoButton.highlightedColor = red_disabled
+        
+        view.bringSubviewToFront(horizStack)
+        view.bringSubviewToFront(vertStack)
+        
+        redoButton.isHidden = true
+        shareButton.isHidden = true
     }
     
     func setupFocusSquare() {
@@ -177,10 +197,6 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
         return linePoint + lineDirection.normalize().scale(factor: t)
     }
     
-    private func addPinchGesture() {
-//            let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(didPinch(_:)))
-//            self.sceneView.addGestureRecognizer(pinchGesture)
-    }
     
     func updateFocusSquare() {
         DispatchQueue.main.async {
@@ -205,44 +221,6 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
         }
         return (SCNVector3(0, 0, -1), SCNVector3(0, 0, -0.2))
     }
-    
-    func drawShape(){
-//        path.move(to: CGPoint(x: 0.1, y: 0.5))
-//        path.addLine(to: CGPoint(x: 0.1, y: 0.1))
-//        path.addLine(to: CGPoint(x: 0.3, y: 0.1))
-//        path.addLine(to: CGPoint(x: -0.1, y: -0.5))
-//        path.addLine(to: CGPoint(x: -0.1, y: -0.1))
-//        path.addLine(to: CGPoint(x: -0.3, y: -0.1))
-
-        path.close()
-        
-        let shape = SCNShape(path: path, extrusionDepth: 0.04)
-        let color = UIColor.yellow
-        shape.firstMaterial?.diffuse.contents = color
-        shape.chamferRadius = 0.05
-        
-        let boltNode = SCNNode(geometry: shape)
-        //boltNode.position.z = -1
-        
-        sceneView.scene.rootNode.addChildNode(boltNode)
-    }
-    
-//    func updateText( text: String, atPosition: SCNVector3 ) {
-//         textNode.removeFromParentNode()
-//
-//         let textGeometry = SCNText(string: text, extrusionDepth: 1.0)
-//         textGeometry.firstMaterial?.diffuse.contents = UIColor.systemRed
-//
-//         textNode = SCNNode(geometry: textGeometry)
-//         textNode.position = SCNVector3(
-//             atPosition.x,
-//             atPosition.y + 0.01,
-//             atPosition.z
-//         )
-//
-//         textNode.scale = SCNVector3(0.01, 0.01, 0.01)
-//         sceneView.scene.rootNode.addChildNode(textNode)
-//     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -335,12 +313,78 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
 
     }
     
+    //MARK: - IBActions
+    @IBAction func moreButtonPressed(_ sender: Any) {
+        let dur = 0.4
+        let op = UIView.AnimationOptions.transitionCrossDissolve
+        
+        if (moreToggled){
+            if self.shareButton.isHidden == false {
+                UIView.transition(with: shareButton, duration: 1*dur,
+                                  options: op,
+                                  animations: {
+                                    self.shareButton.isHidden = true
+                              })
+            }
+            UIView.transition(with: redoButton, duration: 2*dur,
+                              options: op,
+                              animations: {
+                                self.redoButton.isHidden = true
+                          })
+        }else{
+            UIView.transition(with: redoButton, duration: 1*dur,
+                              options: op,
+                              animations: {
+                                self.redoButton.isHidden = false
+                          })
+            if allLineGroups.count != 0 {
+                UIView.transition(with: shareButton, duration: 3*dur,
+                                  options: op,
+                                  animations: {
+                                    self.shareButton.isHidden = false
+                              })
+            }
+            
+            
+        }
+        
+        
+        moreToggled = !moreToggled
+        moreButton.defaultColor = moreToggled ? orange_disabled : orange_clickable
+        
+    }
+    
+    
+    @IBAction func placeButtonPressed(_ sender: Any) {
+        self.placePoint(sender as! UIButton)
+        
+    }
+    
+    @IBAction func finishButtonPressed(_ sender: Any) {
+        self.finishAction(sender as! UIButton)
+    }
+    
+    @IBAction func redoButtonPressed(_ sender: Any) {
+        resetEverything()
+    }
+    
+    @IBAction func shareButtonPressed(_ sender: Any) {
+        exportObject(sender as! UIButton)
+    }
+    
     
 }
 
 @objc private extension MainViewController{
     func placePoint(_ sender: UIButton){
         drawing_state = DrawingState.PLACING_NODES
+        
+        if linesGroup?.lines.count ?? 0 >= 1{
+            completedButton.defaultColor = orange_clickable
+        }else{
+            completedButton.defaultColor = orange_disabled
+        }
+        
         
         if let group = linesGroup {
             group.add_line()
@@ -363,6 +407,15 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
         if (drawing_state == DrawingState.EXTENDING){ //We have completed a 3d figure
             drawing_state = DrawingState.NOT_SET
             ObjectFactory.generate_points(allLineGroups: allLineGroups)
+            
+            if (moreToggled){
+                UIView.transition(with: shareButton, duration: 0.4,
+                                  options: .transitionCrossDissolve,
+                                  animations: {
+                                    self.shareButton.isHidden = false
+                              })
+                
+            }
             return
         }
         
@@ -399,19 +452,8 @@ class MainViewController: UIViewController, ARSCNViewDelegate {
         }
         self.connectors = []
         
+        shareButton.isHidden = true
+        
         areaValue = 0.00
     }
-    
-    
-    
-//    func didPinch(_ gesture: UIPinchGestureRecognizer) {
-////        allLineGroups[0].update_heights()
-////        if (allLineGroups.count < 2){
-////            let new_group : LineGroup =  allLineGroups[0].copy() as! LineGroup
-////            allLineGroups.append(new_group)
-////            allLineGroups[1] = new_group
-////
-////        }
-//        allLineGroups[1].update_heights(newHeights: 0.1)
-//    }
 }

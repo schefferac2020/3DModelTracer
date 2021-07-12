@@ -10,6 +10,11 @@ import SceneKit
 
 class Modify2DViewController: UIViewController {
     
+    let orange_clickable = UIColor(red: 251/255, green: 147/255, blue: 0/255, alpha: 1.0)
+    let orange_disabled = UIColor(red: 251/255, green: 147/255, blue: 0/255, alpha: 0.5)
+    
+    let good_red = UIColor(red: 245/255, green: 71/255, blue: 72/255, alpha: 1.0)
+    
     var points : [CGPoint] = []
     var circles: [CircleView] = []
     var sublayers: [CAShapeLayer] = []
@@ -77,7 +82,7 @@ class Modify2DViewController: UIViewController {
         for point in points{
             let newCircle = CircleView(frame: CGRect(x: horiz_offset + scale * Double(point.x), y: vert_offset + scale * Double(point.y), width: 25, height: 25))
             
-            newCircle.backgroundColor = .red
+            newCircle.backgroundColor = good_red
             view.addSubview(newCircle)
             newCircle.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(didPan(gesture:))))
             
@@ -96,7 +101,12 @@ class Modify2DViewController: UIViewController {
         view.backgroundColor = .white
         setupObjFile()
         horiz_offset = (Double(view.frame.width) - Double(wanted_width)) / 2
-        makeModelButton.defaultColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 0.7)
+        
+        
+        makeModelButton.defaultColor = orange_clickable
+        makeModelButton.highlightedColor = orange_disabled
+
+        
         
         setPointsAndCircles()
         
