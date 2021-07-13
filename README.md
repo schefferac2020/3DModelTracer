@@ -1,15 +1,18 @@
 # ModelMaker iOS App
 
 
+## App Demo
 
-https://user-images.githubusercontent.com/54146662/125353874-19c25180-e331-11eb-9d28-e3729da8c727.mp4
 
+https://user-images.githubusercontent.com/54146662/125492038-4f58e05d-de92-4f0f-b60d-3c2483d90760.mp4
+
+<img width="415" alt="Screen Shot 2021-07-13 at 12 34 32 PM" src="https://user-images.githubusercontent.com/54146662/125491777-9ecf5e0a-a453-4709-8ad9-6124b1fbd50e.png">
 
 
 This app uses apple's ARKit to place feature points in the scene to create 3d objects (specifically floor plans) that can be exported as .obj files by the user. The app uses the feature points determined by the user to make a to-scale representation of a simple 3D polygon. Adjustments to the base layer of the polygon can be made after placing the feature points in the "2D Floorplan" screen as seen. Feel free to contact me if you have any questions or suggestions.
 
 
-Download the .obj file from the video [here](https://drive.google.com/file/d/132-11gMiBwov4iWTfZ3ab97p8j_pJnl7/view?usp=sharing)
+Download the .obj file from the video [here](https://drive.google.com/file/d/1vZvbJ3ytPcSBv4-B2p9-U0NT78VHCDnX/view?usp=sharing)
 
 ## Future Improvements
 
